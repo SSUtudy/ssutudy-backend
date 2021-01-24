@@ -21,7 +21,7 @@ public class UserService {
 
     @Transactional
     public UserDetail signUp(SignUpRequest signUpRequest) {
-        boolean userAlreadyExists = userRepository.existsByEmail(signUpRequest.getId());
+        boolean userAlreadyExists = userRepository.existsByEmail(signUpRequest.getEmail());
         if(userAlreadyExists) throw new ResponseStatusException(HttpStatus.CONFLICT, "이미 해당 id를 사용하고 있는 사용자가 있습니다");
 
         User newUser = User.builder()

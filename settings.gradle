@@ -3,7 +3,4 @@ rootProject.name = 'backend'
 include 'application'
 include 'domain'
 include 'core'
-include 'application'
-include 'domain'
-include 'core'
 
