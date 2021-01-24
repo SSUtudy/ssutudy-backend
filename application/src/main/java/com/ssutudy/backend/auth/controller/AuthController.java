@@ -1,5 +1,6 @@
 package com.ssutudy.backend.auth.controller;
 
+import com.ssutudy.backend.auth.request.SignInRequest;
 import com.ssutudy.backend.auth.request.SignUpRequest;
 import com.ssutudy.backend.auth.response.TokenResponse;
 import com.ssutudy.backend.auth.service.UserService;
@@ -25,6 +26,19 @@ public class AuthController {
         @Valid @RequestBody SignUpRequest signUpRequest
     ) {
         UserDetail user = userService.signUp(signUpRequest);
+
+        JwtClaim claim = new JwtClaim(user.getId());
+        String accessToken = JwtUtil.generateAccessToken(claim);
+
+        return new TokenResponse(accessToken, user);
+    }
+
+    @PostMapping("/sign-in")
+    @ResponseStatus(HttpStatus.OK)
+    public TokenResponse signIn(
+        @Valid @RequestBody SignInRequest signInRequest
+    ) {
+        UserDetail user = userService.signIn(signInRequest);
 
         JwtClaim claim = new JwtClaim(user.getId());
         String accessToken = JwtUtil.generateAccessToken(claim);

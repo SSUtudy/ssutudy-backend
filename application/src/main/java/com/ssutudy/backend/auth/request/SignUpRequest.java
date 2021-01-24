@@ -3,6 +3,7 @@ package com.ssutudy.backend.auth.request;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -26,6 +27,7 @@ public class SignUpRequest {
     private String password;
 
     @NotNull
+    @Email
     @Size(min=1, max=50)
     private String email;
 }

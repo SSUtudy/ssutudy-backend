@@ -1,5 +1,6 @@
 package com.ssutudy.backend.auth.service;
 
+import com.ssutudy.backend.auth.request.SignInRequest;
 import com.ssutudy.backend.auth.request.SignUpRequest;
 import com.ssutudy.backend.domain.user.dto.UserDetail;
 import com.ssutudy.backend.domain.user.entity.User;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -18,7 +21,7 @@ public class UserService {
 
     @Transactional
     public UserDetail signUp(SignUpRequest signUpRequest) {
-        boolean userAlreadyExists = userRepository.existsById(signUpRequest.getId());
+        boolean userAlreadyExists = userRepository.existsByEmail(signUpRequest.getId());
         if(userAlreadyExists) throw new ResponseStatusException(HttpStatus.CONFLICT, "이미 해당 id를 사용하고 있는 사용자가 있습니다");
 
         User newUser = User.builder()
@@ -32,6 +35,18 @@ public class UserService {
         newUser = userRepository.save(newUser);
 
         UserDetail userDetail = new UserDetail(newUser);
+        return userDetail;
+    }
+
+    @Transactional(readOnly = true)
+    public UserDetail signIn(SignInRequest signInRequest) {
+        String email = signInRequest.getEmail();
+        String password = signInRequest.getPassword();
+
+        Optional<User> optionalUser = userRepository.findByEmailAndPassword(email, password);
+        if(optionalUser.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+        UserDetail userDetail = new UserDetail(optionalUser.get());
         return userDetail;
     }
 }
