@@ -1,4 +1,4 @@
-package com.ssutudy.backend.jwt;
+package com.ssutudy.backend.core.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

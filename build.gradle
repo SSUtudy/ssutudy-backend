@@ -46,6 +46,10 @@ subprojects {
 	test {
 		useJUnitPlatform()
 	}
+
+	jar {
+		enabled = true
+	}
 }
 
 project(':core') {

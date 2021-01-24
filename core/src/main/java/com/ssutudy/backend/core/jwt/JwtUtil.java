@@ -1,6 +1,5 @@
-package com.ssutudy.backend.jwt;
+package com.ssutudy.backend.core.jwt;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
