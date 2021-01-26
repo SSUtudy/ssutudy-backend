@@ -1,4 +1,4 @@
-package com.ssutudy.backend.common.exception;
+package com.ssutudy.backend.config.exception;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

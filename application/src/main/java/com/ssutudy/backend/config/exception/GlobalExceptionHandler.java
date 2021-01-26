@@ -1,4 +1,4 @@
-package com.ssutudy.backend.common.exception;
+package com.ssutudy.backend.config.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
