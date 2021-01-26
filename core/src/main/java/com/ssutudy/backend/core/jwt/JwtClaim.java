@@ -9,7 +9,7 @@ import java.util.Map;
 @AllArgsConstructor
 @Getter
 public class JwtClaim {
-    private String id;
+    private Integer id;
 
     public Map<String, Object> generate() {
         Map<String, Object> claims = new HashMap<>();

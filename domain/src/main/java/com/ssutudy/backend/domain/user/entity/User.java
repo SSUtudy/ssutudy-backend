@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,7 +14,8 @@ import java.util.Date;
 @Getter
 public class User {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -25,7 +23,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String major;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique = true)
     private String email;
 
     @Column(nullable = false, length = 64)
@@ -36,8 +34,7 @@ public class User {
     private Date createdAt;
 
     @Builder
-    public User(String id, String name, String major, String email, String password) {
-        this.id = id;
+    public User(String name, String major, String email, String password) {
         this.name = name;
         this.major = major;
         this.email = email;

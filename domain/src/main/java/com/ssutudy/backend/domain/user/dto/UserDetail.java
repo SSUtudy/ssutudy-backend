@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class UserDetail {
-    private String id;
+    private Integer id;
     private String name;
     private String major;
     private String email;

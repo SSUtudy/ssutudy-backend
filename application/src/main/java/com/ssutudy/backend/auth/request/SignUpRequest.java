@@ -12,10 +12,6 @@ import javax.validation.constraints.Size;
 public class SignUpRequest {
     @NotNull
     @Size(min=1, max=50)
-    private String id;
-
-    @NotNull
-    @Size(min=1, max=50)
     private String major;
 
     @NotNull
@@ -23,7 +19,6 @@ public class SignUpRequest {
     private String name;
 
     @NotNull
-    @Size(min=64, max=64)
     private String password;
 
     @NotNull

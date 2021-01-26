@@ -25,7 +25,6 @@ public class UserService {
         if(userAlreadyExists) throw new ResponseStatusException(HttpStatus.CONFLICT, "이미 해당 id를 사용하고 있는 사용자가 있습니다");
 
         User newUser = User.builder()
-            .id(signUpRequest.getId())
             .name(signUpRequest.getName())
             .email(signUpRequest.getEmail())
             .major(signUpRequest.getMajor())
