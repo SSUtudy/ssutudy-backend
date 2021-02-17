@@ -29,54 +29,15 @@ subprojects {
 		annotationProcessor 'org.projectlombok:lombok'
 	}
 
-	task initSourceFolders {
-		sourceSets*.java.srcDirs*.each {
-			if (!it.exists()) {
-				it.mkdirs()
-			}
-		}
-
-		sourceSets*.resources.srcDirs*.each {
-			if (!it.exists()) {
-				it.mkdirs()
-			}
-		}
-	}
-
 	test {
 		useJUnitPlatform()
 	}
 
+	bootJar {
+		enabled = false
+	}
+
 	jar {
 		enabled = true
-	}
-}
-
-project(':core') {
-	dependencies {
-		implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
-		runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
-		runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
-	}
-}
-
-project(':domain') {
-	dependencies {
-		implementation project(':core')
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	}
-}
-
-project(':application') {
-	dependencies {
-		implementation project(':core')
-		implementation project(':domain')
-
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-		implementation 'org.springframework.boot:spring-boot-starter-validation'
-		implementation 'org.springframework.boot:spring-boot-starter-web'
-		runtimeOnly 'mysql:mysql-connector-java'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	}
 }
