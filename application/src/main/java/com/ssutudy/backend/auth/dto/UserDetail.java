@@ -1,4 +1,4 @@
-package com.ssutudy.backend.domain.user.dto;
+package com.ssutudy.backend.auth.dto;
 
 import com.ssutudy.backend.domain.user.entity.User;
 import lombok.Getter;

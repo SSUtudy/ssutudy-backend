@@ -1,4 +1,4 @@
-package com.ssutudy.backend.auth.request;
+package com.ssutudy.backend.auth.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
