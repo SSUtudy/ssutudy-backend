@@ -4,7 +4,6 @@ import com.ssutudy.backend.auth.exception.UserAlreadyExistException;
 import com.ssutudy.backend.auth.exception.UserNotFoundException;
 import com.ssutudy.backend.auth.dto.SignInRequest;
 import com.ssutudy.backend.auth.dto.SignUpRequest;
-import com.ssutudy.backend.auth.dto.UserDetail;
 import com.ssutudy.backend.domain.user.entity.User;
 import com.ssutudy.backend.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

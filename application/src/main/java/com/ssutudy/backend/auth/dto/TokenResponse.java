@@ -1,6 +1,5 @@
 package com.ssutudy.backend.auth.dto;
 
-import com.ssutudy.backend.auth.dto.UserDetail;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
