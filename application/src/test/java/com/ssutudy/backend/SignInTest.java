@@ -15,22 +15,22 @@ import java.net.URI;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SignInTest extends ApiIntegrationTest {
+class SignInTest extends ApiIntegrationTest {
     private static final String EMAIL = "test@email.com";
     private static final String PASSWORD = "password";
     private static final String NAME = "NAME";
     private static final String MAJOR = "MAJOR";
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public SignInTest(@LocalServerPort int port) {
+    public SignInTest(@LocalServerPort int port, UserRepository userRepository) {
         super(port);
+        this.userRepository = userRepository;
     }
 
     @Test
-    public void signInShouldReturnToken() {
+    void signInShouldReturnToken() {
         User user = User.builder()
             .email(EMAIL)
             .password(PASSWORD)

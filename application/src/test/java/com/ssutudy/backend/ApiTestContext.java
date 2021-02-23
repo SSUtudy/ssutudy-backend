@@ -11,18 +11,19 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 import java.util.Collections;
 
 public class ApiTestContext {
-    private OpenApiValidationClientHttpRequestInterceptor validationInterceptor = new OpenApiValidationClientHttpRequestInterceptor(
-        OpenApiInteractionValidator.createForSpecificationUrl("spec.yaml")
-            .withLevelResolver(
-                LevelResolver.create().withLevel("validation.request", ValidationReport.Level.IGNORE).build()
-            )
-            .build()
-    );
 
     private final TestRestTemplate testRestTemplate;
 
     public ApiTestContext(int port) {
         final String rootUri = "http://localhost:"+port;
+
+        OpenApiValidationClientHttpRequestInterceptor validationInterceptor = new OpenApiValidationClientHttpRequestInterceptor(
+            OpenApiInteractionValidator.createForSpecificationUrl("spec.yaml")
+                .withLevelResolver(
+                    LevelResolver.create().withLevel("validation.request", ValidationReport.Level.IGNORE).build()
+                )
+                .build()
+        );
 
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder()
             .interceptors(Collections.singleton(validationInterceptor))
