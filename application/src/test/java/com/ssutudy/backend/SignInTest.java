@@ -6,6 +6,7 @@ import com.ssutudy.backend.domain.user.entity.User;
 import com.ssutudy.backend.domain.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -25,8 +26,8 @@ public class SignInTest extends ApiIntegrationTest {
     private UserRepository userRepository;
 
     @Autowired
-    public SignInTest(ServletWebServerApplicationContext servletWebServerApplicationContext) {
-        super(servletWebServerApplicationContext);
+    public SignInTest(@LocalServerPort int port) {
+        super(port);
     }
 
     @Test

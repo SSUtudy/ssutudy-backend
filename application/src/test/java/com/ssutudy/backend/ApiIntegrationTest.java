@@ -14,8 +14,7 @@ public class ApiIntegrationTest {
     protected ApiTestContext apiTestContext;
 
     @Autowired
-    public ApiIntegrationTest(ServletWebServerApplicationContext servletWebServerApplicationContext) {
-        int port = servletWebServerApplicationContext.getWebServer().getPort();
+    public ApiIntegrationTest(int port) {
         apiTestContext = new ApiTestContext(port);
     }
 }
