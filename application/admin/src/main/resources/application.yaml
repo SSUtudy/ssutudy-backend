@@ -1,2 +1,23 @@
 server:
   port: 8090
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+            auth: true
+            starttls:
+              enable: true
+  boot:
+    admin:
+      notify:
+        mail:
+          to: ${MAIL_TO}

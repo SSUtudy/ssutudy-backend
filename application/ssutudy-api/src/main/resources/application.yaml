@@ -3,6 +3,8 @@ spring:
     admin:
       client:
         url: http://localhost:8090
+        username: admin
+        password: admin
 management:
   endpoints:
     web:
